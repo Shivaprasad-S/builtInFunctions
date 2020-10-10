@@ -1,8 +1,6 @@
 def myabs(number):
     """ Implementation of built-in `abs` function """
-    if number<0:
-        return -number
-    return number
+    return -number if number<0 else number
 
 
 def myall(iterable):
