@@ -22,42 +22,41 @@ def myany(iterable):
 
 def mylen(s):
     """ Implementation of built-in `len` function """
-    leng=0
+    length=0
     for _ in s:
-        leng+=1
-    return leng
+        length+=1
+    return length
 
 
 def mysum(iterable):
     """ Implementation of built-in `sum` function """
     sum=0
-    for i in range(len(iterable)):
-        sum=sum+iterable[i]
+    for item in range(len(iterable)):
+        sum=sum+iterable[item]
     return sum
 
 
 def mymax(iterable):
     """ Implementation of built-in `max` function """
-    a=iterable[0]
-    for i in range(1,len(iterable)):
-        #print(i)
-        if iterable[i]>a:
-            a=iterable[i]
-    return a
+    maximum=iterable[0]
+    for item in range(1,len(iterable)):
+        if iterable[item]>maximum:
+            maximum=iterable[item]
+    return maximum
 
 
 def mymin(iterable):
     """ Implementation of built-in `min` function """
-    a=iterable[0]
-    for i in range(1,len(iterable)):
-        if iterable[i]<a:
-            a=iterable[i]
-    return a
+    minimum=iterable[0]
+    for item in range(1,len(iterable)):
+        if iterable[item]<minimum:
+            minimum=iterable[item]
+    return minimum
 
 
-def mydivmod(a, b):
+def mydivmod(num1, num2):
     """ Implementation of built-in `divmod` function """
-    return (a//b,a%b)
+    return (num1//num2,num1%num2)
 
 
 def mybool(x):
@@ -143,12 +142,19 @@ def myisinstance(object, classinfo):
 def myround(number, ndigits=None):
     """ Implementation of built-in `round` function """
     dot='.'
+    number=str(number)
     lst=list(str(number))
-    f=str(number).find(dot)
-    t=f+ndigits+1
-    if int(lst[t])>5:
-        lst[t-1]=str(int(lst[t-1])+1)
-    return ''.join(lst[0:t])
+    decimal=str(number).find(dot)
+    if decimal<0:
+        return number
+    else:
+        if int(len(number[(decimal+1):]))<=ndigits:
+            return number
+        else:
+            lastdigit=decimal+ndigits+1
+            if int(lst[lastdigit])>5:
+                lst[lastdigit-1]=str(int(lst[lastdigit-1])+1)
+            return ''.join(lst[0:lastdigit])
 
 
 def mysorted(iterable, reverse=False):

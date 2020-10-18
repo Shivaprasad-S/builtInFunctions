@@ -31,7 +31,7 @@ assert(bif.mybin(123) == bin(123))
 assert(bif.myhex(123) == hex(123))
 assert(bif.myoct(123) == oct(123))
 
-assert(bif.myisinstance(14.5, 'float'))
+assert(bif.myisinstance(14, 'int'))
 assert(bif.myround(123.56789, ndigits=3))
 assert(bif.mysorted("sadjbhuyv", reverse=False))
 
