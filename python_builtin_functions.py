@@ -31,8 +31,8 @@ def mylen(s):
 def mysum(iterable):
     """ Implementation of built-in `sum` function """
     sum=0
-    for item in range(len(iterable)):
-        sum=sum+iterable[item]
+    for item in iterable:
+        sum=sum+item
     return sum
 
 
@@ -66,18 +66,12 @@ def mybool(x):
 
 def mypow(base, exp):
     """ Implementation of built-in `pow` function """
-    counter=1
-    prod=1
-    while counter<=exp:
-        prod=prod*base
-        counter+=1
-    return prod
+    return base**exp
 
 
 def myreversed(seq):
     """ Implementation of built-in `reversed` function """
-    reverse=seq[::-1]
-    return reverse
+    return seq[::-1]
 
 
 def myenumerate(iterable, start=0):
@@ -133,7 +127,8 @@ def myoct(x):
 def myisinstance(object, classinfo):
     """ Implementation of built-in `isinstance` function """
     t1=type(object)
-    t2=str(t1).find(classinfo)
+    #classinfo=str(classinfo)
+    t2=str(t1).find(str(classinfo))
     if t2>=0:
         return True
     return False
@@ -165,7 +160,7 @@ def mysorted(iterable, reverse=False):
         for j in range(len(iterable)):
             if i!=j:
                 if iterable[i]>iterable[j]:
-                    temp=iterable[i]
-                    iterable[i]=iterable[j]
-                    iterable[j]=temp
+                    #temp=iterable[i]
+                    iterable[i],iterable[j]=iterable[j],iterable[i]
+                    #iterable[j]=temp
     return iterable
